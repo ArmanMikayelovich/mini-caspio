@@ -3,7 +3,7 @@ package com.mikayelovich.mini.caspio;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +18,7 @@ public class CaspioApplication {
 		SpringApplication.run(CaspioApplication.class, args);
 	}
 
-	@PostMapping("/caspio")
+	@GetMapping("/caspio")
 	public ResponseEntity<ResponseModel> test() {
 		int i = new Random(10).nextInt();
 		if (i < 5) {
