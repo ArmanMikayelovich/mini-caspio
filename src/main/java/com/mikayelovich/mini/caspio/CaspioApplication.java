@@ -2,11 +2,11 @@ package com.mikayelovich.mini.caspio;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Random;
 
 @SpringBootApplication
@@ -19,19 +19,12 @@ public class CaspioApplication {
 	}
 
 	@GetMapping("/caspio")
-	public ResponseEntity<ResponseModel> test() {
-		int i = new Random(10).nextInt();
-		if (i < 5) {
-			return ResponseEntity.status(503).body(new ResponseModel(503));
+	public void test(HttpServletResponse response) {
+		int i = new Random(9).nextInt();
+		if (i < 4) {
+			response.setStatus(503);
 		}else {
-			return ResponseEntity.status(200).build();
+			response.setStatus(201);
 		}
-	}
-
-	public static class ResponseModel {
-		public ResponseModel(int code) {
-			this.code = code;
-		}
-		private final int code;
 	}
 }
