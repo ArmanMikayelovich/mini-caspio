@@ -21,7 +21,7 @@ public class CaspioApplication {
 	@GetMapping("/caspio")
 	public void test(HttpServletResponse response) {
 		int i = new Random().nextInt(9);
-		if (i < 4) {
+		if (i < 3) {
 			response.setStatus(503);
 		}else {
 			response.setStatus(200);
